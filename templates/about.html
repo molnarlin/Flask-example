@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+
     <h2>{{ page_title }}</h2>
     <p>
         Thorin and Company were a group of thirteen Dwarves, the Wizard Gandalf, and the Hobbit Bilbo 
@@ -15,89 +16,37 @@
          number, and as Gandalf had planned to leave on other business, welcomed a fourteenth to fill 
          into their party.
     </p>
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h3>Thorin Oakenshield</h3>
-            <p>Thorin II "Oakenshield", eventually called King under the Mountain or Mountain King,
-                 was the son of Thráin II, the older brother of Frerin and Dís, the grandson of 
-                King Thrór and the uncle of Fíli and Kíli. Thorin was best known for his deeds as 
-                leader of a company that infiltrated the lost Kingdom under the Mountain to take it 
-                back from Smaug and for leading an alliance of Men, Dwarves, and Elves in the Battle 
-                of Five Armies.</p>
+
+    {% for member in company %}
+
+        <div class="row featurette">
+
+            {% if loop.index % 2 != 0 %}
+            <div class="col-md-7">
+                <h3>{{ loop.index }}.{{ member.name }}</h3>
+                <p> {{ member.description }} </p>
+            </div>
+            <div class="col-md-5">
+                <img src="{{ member.image_sorce }}" alt="" class="featurette-image image-responsive">
+            </div>
+
+            {% else %}
+            <div class="col-md-5">
+                <img src="{{ member.image_sorce }}" alt="" class="featurette-image image-responsive">
+            </div>
+            <div class="col-md-7">
+                <h3>{{ loop.index }}.{{ member.name }}</h3>
+                <p> {{ member.description }} </p>
+            </div>
+
+            {% endif %}
         </div>
-        <div class="col-md-5">
-            <img src="https://static.wikia.nocookie.net/lotr/images/7/76/Orcrist-Sword-of-Thorin-Oakenshield.jpg" alt="">
-        </div>
-    </div>
-    <div class="row featurette">
-        <div class="col-md-5">
-            <img src="https://static.wikia.nocookie.net/lotr/images/a/a6/HBT-DWF-003.jpg" alt="">
-        </div>
-        <div class="col-md-7">
-            <h3>Fili and Kili</h3>
-            <p>
-                Fíli and Kíli were nephews of Thorin, who was the elder brother of their mother, Dís. 
-                They were also nephews of Frerin, grandsons of Thráin II, and great-grandsons of 
-                Thrór. Fíli's most distinguishing feature was his long nose, the longest of any of 
-                the Dwarves in Thorin's company.
-            </p>
-        </div>
-    </div>
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h3>Óin</h3>
-            <p>
-                Óin was the older brother of Glóin, cousin of Dwalin and Balin, and uncle of Gimli. 
-                Óin's uncle was Fundin, the father of Balin and Dwalin. Óin fought in the Battle of 
-                Azanulbizar along with Thorin Oakenshield, and in TA 2941 joined Thorin's company on 
-                the quest to reclaim the Lonely Mountain, wearing a brown hood.[2] Óin was one of the 
-                Dwarves who bet that Bilbo would come along with them to reclaim the Lonely Mountain. 
-                Óin and his brother Glóin were usually in charge of preparing the fire for the Company, 
-                as they were the most skilled of the group. He fought in and survived the Battle of Five
-                 Armies, and later settled in the Lonely Mountain with King Dáin II Ironfoot, along with 
-                 many other Dwarves of the company of Thorin.
-            </p>
-        </div>
-        <div class="col-md-5">
-            <img src="https://static.wikia.nocookie.net/lotr/images/e/e8/Oin.jpg" alt="">
-        </div>
-    </div>
-    <div class="row featurette">
-        <div class="col-md-5">
-            <img src="https://static.wikia.nocookie.net/lotr/images/f/fc/Gloin_2.jpg" alt="">
-        </div>
-        <div class="col-md-7">
-            <h3>Glóin</h3>
-            <p>
-            Glóin was born in TA 2783, after the dragon Smaug desolated Erebor. He was the younger 
-            child of Gróin and younger brother of Óin. In TA 2799, Glóin was known to have fought in 
-            the Battle of Azanulbizar, the last battle of the War of the Dwarves and Orcs, though it 
-            is unknown how significant his contribution was, being 16 years old. In TA 2879, in the 
-            Blue Mountains, while in exile, his son Gimli was born to him and an unknown wife. In 
-            March of TA 2941 in Bree, Thorin Oakenshield met by chance the wizard Gandalf the Grey, 
-            pushing Thorin to reclaim Erebor, so that Smaug wouldn't ally with Sauron. When Gandalf 
-            mentioned Hobbits, Glóin referred them as "simpletons" and also said that Hobbits "would 
-            never dare to come within smelling distance of the nakedest dragonet new from the shell".
-            </p>
-        </div>
-    </div>
-    <div class="row featurette">
-    <div class="col-md-7">
-        <h3>Gandalf</h3>
-        <p>
-            Originally called Olórin, he was accounted as the wisest of the Maiar. He was created by 
-            Ilúvatar before the Music of the Ainur, and was at the beginning of Time amongst the 
-            Ainur who entered into Eä. In his "youth" he became one of the Maiar who served Manwë,
-             Varda, Irmo, and Nienna. He was associated with light and fire, much like Varda, yet his 
-             ways often took him to Nienna, from whom he learned pity and patience. He loved the 
-             Elves, but walked unseen among them, or wore the guise of an Elf, and sent them fair 
-             visions in their hearts that made them wiser. Throughout his life he followed the 
-             example of Nienna, talking pity on the sorrows of the Children of Ilúvatar and drawing 
-             those who listened to him out of despair.
-        </p>
-    </div>
-    <div class="col-md-5">
-        <img src="https://static.wikia.nocookie.net/lotr/images/4/40/Gandalf_the_Grey_profile.jpg/" alt="">
-    </div>
-</div>
+
+        {% if loop.index != loop.length %}
+
+            <hr class="featurette-divider">
+
+        {% endif %}
+
+    {% endfor %}
 {% endblock %}
